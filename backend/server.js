@@ -3,20 +3,16 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 
-// Load environment variables
 dotenv.config();
 
 const app = express();
 
 // Middleware
-// Allow both the deployed frontend and local dev (Vite) to access this API.
-// You can set FRONTEND_URL in environment variables for production.
 const allowedOrigins = [process.env.FRONTEND_URL || "https://pab-assignment.vercel.app", "http://localhost:5173", "http://127.0.0.1:5173"];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // allow requests with no origin (like mobile apps, curl, Postman)
       if (!origin) return callback(null, true);
       if (allowedOrigins.indexOf(origin) !== -1) {
         return callback(null, true);
@@ -45,7 +41,7 @@ const contactSchema = new mongoose.Schema({
 
 const Contact = mongoose.model("Contact", contactSchema);
 
-// POST /contact route
+// POST 
 app.post("/contact", async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -64,11 +60,11 @@ app.post("/contact", async (req, res) => {
   }
 });
 
-// Health check route (optional)
+// Health check route
 app.get("/", (req, res) => {
   res.send("Server is running...");
 });
 
-// Start server
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

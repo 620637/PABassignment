@@ -1,6 +1,6 @@
 import React from 'react'
 import Hero from './components/HeroSection'
-import Courses from './components/Courses'
+import Courses from './components/courses.jsx'
 import ContactForm from './components/ContactForm'
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
         <ContactForm />
       </main>
       <footer className="footer">
-        © {new Date().getFullYear()} SimpleCourse — made with ❤️
+        © {new Date().getFullYear()} Lead_Learn_Grow — made with ❤️
       </footer>
     </div>
   )

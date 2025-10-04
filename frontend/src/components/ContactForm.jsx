@@ -11,7 +11,7 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus(null);
 
-    // Basic validation
+    // validation
     if (!name.trim() || !email.trim() || !message.trim()) {
       setStatus({ type: "error", text: "Please fill all fields." });
       return;
@@ -19,7 +19,6 @@ export default function ContactForm() {
 
     setLoading(true);
     try {
-      // Send POST request to backend
      const res = await fetch("https://pabassignment.onrender.com/contact", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
@@ -29,7 +28,6 @@ export default function ContactForm() {
       const data = await res.json();
 
       if (!res.ok) {
-        // Backend returned an error
         throw new Error(data.error || "Server error");
       }
 
@@ -39,8 +37,6 @@ export default function ContactForm() {
       setEmail("");
       setMessage("");
     } catch (err) {
-      // Network or server error
-
       setStatus({
         type: "error",
         text: err.message || "Something went wrong. Try again later.",

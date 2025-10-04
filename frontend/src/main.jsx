@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 
 import HeroSection from "./components/HeroSection.jsx";
-import Courses from "./components/Courses.jsx";
+import Courses from "./components/courses.jsx";
 import ContactForm from "./components/ContactForm.jsx";
 
 function App() {
