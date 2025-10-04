@@ -9,7 +9,11 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "https://pab-assignment.vercel.app/",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"]
+}));
 app.use(express.json()); // Parse JSON requests
 
 // MongoDB connection
