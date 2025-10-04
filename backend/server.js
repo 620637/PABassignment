@@ -10,7 +10,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: "https://pab-assignment.vercel.app/",
+  origin: "https://pab-assignment.vercel.app",
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"]
 }));
