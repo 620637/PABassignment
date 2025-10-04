@@ -40,6 +40,7 @@ export default function ContactForm() {
       setMessage("");
     } catch (err) {
       // Network or server error
+
       setStatus({
         type: "error",
         text: err.message || "Something went wrong. Try again later.",

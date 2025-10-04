@@ -9,11 +9,25 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors({
-  origin: "https://pab-assignment.vercel.app",
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"]
-}));
+// Allow both the deployed frontend and local dev (Vite) to access this API.
+// You can set FRONTEND_URL in environment variables for production.
+const allowedOrigins = [process.env.FRONTEND_URL || "https://pab-assignment.vercel.app", "http://localhost:5173", "http://127.0.0.1:5173"];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // allow requests with no origin (like mobile apps, curl, Postman)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+    credentials: true,
+  })
+);
 app.use(express.json()); // Parse JSON requests
 
 // MongoDB connection
