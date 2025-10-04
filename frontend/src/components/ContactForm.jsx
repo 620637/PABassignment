@@ -20,11 +20,11 @@ export default function ContactForm() {
     setLoading(true);
     try {
       // Send POST request to backend
-      const res = await fetch("https://pabassignment.onrender.com/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
-      });
+     const res = await fetch("https://pabassignment.onrender.com/contact", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ name, email, message }),
+});
 
       const data = await res.json();
 
